@@ -123,6 +123,16 @@
 
 				<!-- Registration form -->
 				<form class="login-form" method="POST" action="{{ route('register') }}">
+					@csrf
+					@if ($errors->any())
+				        <div class="alert alert-danger">
+					    <ul>
+						    @foreach ($errors->all() as $error)
+							    <li>{{ $error }}</li>
+						    @endforeach
+					    </ul>
+				        </div>
+				    @endif
 					<div class="card mb-0">
 						<div class="card-body">
 							<div class="text-center mb-3">
@@ -136,66 +146,41 @@
 							</div>
 
 							<div class="form-group form-group-feedback form-group-feedback-left">
-								<input type="text" class="form-control" placeholder="Username">
+								<input type="text" class="form-control" name="name" placeholder="Username">
 								<div class="form-control-feedback">
 									<i class="icon-user-check text-muted"></i>
 								</div>
-								<span class="form-text text-danger"><i class="icon-cancel-circle2 mr-2"></i> This username is already taken</span>
 							</div>
 
 							<div class="form-group form-group-feedback form-group-feedback-left">
-								<input type="password" class="form-control" placeholder="Password">
+								<input type="email" class="form-control" name="email" placeholder="Your email">
+								<div class="form-control-feedback">
+									<i class="icon-mention text-muted"></i>
+								</div>
+							</div>
+
+							<div class="form-group form-group-feedback form-group-feedback-left">
+								<input type="password" name="password" class="form-control" placeholder="Password">
+								<div class="form-control-feedback">
+									<i class="icon-user-lock text-muted"></i>
+								</div>
+							</div>
+
+							<div class="form-group form-group-feedback form-group-feedback-left">
+								<input type="password" name="password_confirmation" class="form-control" placeholder="Repeat Password">
 								<div class="form-control-feedback">
 									<i class="icon-user-lock text-muted"></i>
 								</div>
 							</div>
 
 							<div class="form-group text-center text-muted content-divider">
-								<span class="px-2">Your contacts</span>
-							</div>
-
-							<div class="form-group form-group-feedback form-group-feedback-left">
-								<input type="password" class="form-control" placeholder="Your email">
-								<div class="form-control-feedback">
-									<i class="icon-mention text-muted"></i>
-								</div>
-							</div>
-
-							<div class="form-group form-group-feedback form-group-feedback-left">
-								<input type="password" class="form-control" placeholder="Repeat email">
-								<div class="form-control-feedback">
-									<i class="icon-mention text-muted"></i>
-								</div>
-							</div>
-
-							<div class="form-group text-center text-muted content-divider">
-								<span class="px-2">Additions</span>
-							</div>
-
-							<div class="form-group">
-								<div class="form-check">
-									<label class="form-check-label">
-										<input type="checkbox" name="remember" class="form-input-styled" checked data-fouc>
-										Send me <a href="#">test account settings</a>
-									</label>
-								</div>
-
-								<div class="form-check">
-									<label class="form-check-label">
-										<input type="checkbox" name="remember" class="form-input-styled" checked data-fouc>
-										Subscribe to monthly newsletter
-									</label>
-								</div>
-
-								<div class="form-check">
-									<label class="form-check-label">
-										<input type="checkbox" name="remember" class="form-input-styled" data-fouc>
-										Accept <a href="#">terms of service</a>
-									</label>
-								</div>
+								<span class="px-2"></span>
 							</div>
 
 							<button type="submit" class="btn bg-teal-400 btn-block">Register <i class="icon-circle-right2 ml-2"></i></button>
+							
+							<a href="{{ route('login') }}" class="btn btn-info btn-block">Sign In <i class="icon-arrow-up-left2 ml-2"></i></a><br>
+							
 						</div>
 					</div>
 				</form>
@@ -216,7 +201,7 @@
 
 				<div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text">
-						&copy; {{ date('Y') }} <a href="#">Limitless Web App Kit</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>
+						&copy; {{ date('Y') }}. <a href="#">Resep Restoran</a> by <a href="https://www.instagram.com/teukuululazmi/ " target="_blank">Teuku Ulul Azmi</a>
 					</span>
 				</div>
 			</div>
